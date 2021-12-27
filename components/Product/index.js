@@ -1,38 +1,44 @@
-import React from "react";
+import React, {useMemo} from "react";
 import styles from './style.module.scss';
 import Gallery from "../Gallery";
 import Container from "../Container";
 import QuantityInput from "../QuantityInput";
 import CartIcon from '../../public/img/icon-cart.svg';
 
-const Product = () => {
+const Product = ({
+                     images, company, name, description,
+                     price, originalPrice
+                 }) => {
+
+    const discountRate = useMemo(() => {
+        return 100 * ((originalPrice - price) / originalPrice);
+    }, [price, originalPrice]);
+
     return (
         <div className={styles.product}>
-            <Gallery/>
+            <Gallery images={images}/>
             <Container>
                 <div className={styles.productInfoContainer}>
                     <div className={styles.company}>
-                        Sneaker Company
+                        {company}
                     </div>
                     <h1 className={styles.productName}>
-                        Fall Limited Edition Sneakers
+                        {name}
                     </h1>
                     <p className={styles.productDescription}>
-                        These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber
-                        outer
-                        sole, they’ll withstand everything the weather can offer.
+                        {description}
                     </p>
                     <div className={styles.priceContainer}>
                         <div className={styles.priceContainer}>
                             <span className={styles.price}>
-                                $125.00
+                                ${price?.toFixed(2)}
                             </span>
                             <span className={styles.discountLabel}>
-                                50%
+                                {discountRate.toFixed()}%
                             </span>
                         </div>
                         <span className={styles.originalPrice}>
-                            $250.00
+                            ${originalPrice?.toFixed(2)}
                         </span>
                     </div>
                 </div>

@@ -5,27 +5,9 @@ import NextIcon from '/public/img/icon-next.svg';
 import cn from "classnames";
 import Lightbox from "../Lightbox";
 
-const Gallery = () => {
+const Gallery = ({ images }) => {
     const [selectedIndex, setSelectedIndex] = useState(0);
     const [lightboxOpen, setLightboxOpen] = useState(false);
-    const images = [
-        {
-            image: '/img/image-product-1.jpg',
-            thumbnail: '/img/image-product-1-thumbnail.jpg',
-        },
-        {
-            image: '/img/image-product-2.jpg',
-            thumbnail: '/img/image-product-2-thumbnail.jpg',
-        },
-        {
-            image: '/img/image-product-3.jpg',
-            thumbnail: '/img/image-product-3-thumbnail.jpg',
-        },
-        {
-            image: '/img/image-product-4.jpg',
-            thumbnail: '/img/image-product-4-thumbnail.jpg',
-        },
-    ];
 
     const onLightboxClose = () => {
         setLightboxOpen(false);
