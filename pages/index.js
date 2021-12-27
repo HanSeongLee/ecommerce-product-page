@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import Product from "../components/Product";
 
 const product = {
+  id: 1,
   images: [
     {
       image: '/img/image-product-1.jpg',

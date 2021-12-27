@@ -9,10 +9,13 @@ import CloseIcon from '/public/img/icon-close.svg';
 import cn from 'classnames';
 import Cart from "../Cart";
 import Link from 'next/link';
+import {useAppContext} from "../../context/AppContext";
 
 const Header = () => {
     const [openMenu, setOpenMenu] = useState(false);
     const [openCart, setOpenCart] = useState(false);
+    const [state] = useAppContext();
+    const total = state?.cart?.total;
 
     return (
         <header className={styles.header}>
@@ -63,7 +66,7 @@ const Header = () => {
                              onClick={_ => setOpenCart(!openCart)}
                         >
                             <CartIcon className={styles.cartIcon}/>
-                            <span className={styles.quantityLabel}>3</span>
+                            {total > 0 && <span className={styles.quantityLabel}>{total}</span>}
                         </div>
                         <Avatar/>
                     </div>

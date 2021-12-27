@@ -1,18 +1,34 @@
-import React, {useMemo} from "react";
+import React, {useCallback, useMemo, useState} from "react";
 import styles from './style.module.scss';
 import Gallery from "../Gallery";
 import Container from "../Container";
 import QuantityInput from "../QuantityInput";
 import CartIcon from '../../public/img/icon-cart.svg';
+import {useAppContext} from "../../context/AppContext";
 
-const Product = ({
-                     images, company, name, description,
-                     price, originalPrice
-                 }) => {
+const Product = (product) => {
+    const {
+        images, company, name,
+        description, price, originalPrice
+    } = product;
+    const [quantity, setQuantity] = useState(0);
+    const [state, dispatch] = useAppContext();
 
     const discountRate = useMemo(() => {
         return 100 * ((originalPrice - price) / originalPrice);
     }, [price, originalPrice]);
+
+    const onAddCartClick = useCallback(() => {
+        console.log(product)
+        dispatch({type: 'add_cart', value: {
+                ...product,
+                quantity,
+            }});
+    }, [product, quantity, state, dispatch]);
+
+    const onQuantityChange = (newValue) => {
+        setQuantity(newValue);
+    };
 
     return (
         <div className={styles.product}>
@@ -43,8 +59,12 @@ const Product = ({
                     </div>
                 </div>
                 <div className={styles.addCartContainer}>
-                    <QuantityInput/>
-                    <button className={styles.addCartButton}>
+                    <QuantityInput value={quantity}
+                                   onChange={onQuantityChange}
+                    />
+                    <button className={styles.addCartButton}
+                            onClick={onAddCartClick}
+                    >
                         <CartIcon className={styles.cartIcon}/> Add cart
                     </button>
                 </div>
