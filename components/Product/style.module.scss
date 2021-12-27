@@ -1,0 +1,144 @@
+@import "styles/utils";
+
+.product {
+  @include media(">desktop") {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 125px;
+  }
+}
+
+.productInfoContainer {
+  padding: 24px 0;
+
+  .company {
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 12px;
+    letter-spacing: 1.84615px;
+    text-transform: uppercase;
+    color: #FF7E1B;
+    margin-bottom: 19px;
+
+    @include media(">desktop") {
+      font-size: 13px;
+      line-height: 13px;
+      margin-bottom: 27px;
+    }
+  }
+
+  .productName {
+    font-weight: bold;
+    font-size: 28px;
+    line-height: 32px;
+    color: #1D2026;
+    margin-bottom: 15px;
+
+    @include media(">desktop") {
+      font-size: 44px;
+      line-height: 48px;
+      margin-bottom: 32px;
+    }
+  }
+
+  .productDescription {
+    font-size: 15px;
+    line-height: 25px;
+    color: #69707D;
+    margin-bottom: 24px;
+  }
+
+  .priceContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include media(">desktop") {
+      display: block;
+    }
+  }
+
+  .price {
+    font-weight: bold;
+    font-size: 28px;
+    line-height: 28px;
+    color: #1D2026;
+    margin-right: 16px;
+  }
+
+  .discountLabel {
+    background: #FFEEE2;
+    border-radius: 6px;
+    padding: 4px 8px 4px 8px;
+
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 16px;
+    color: #FF7E1B;
+  }
+
+  .originalPrice {
+    display: block;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 26px;
+    text-decoration-line: line-through;
+    color: #B6BCC8;
+
+    @include media(">desktop") {
+      margin-top: 10px;
+    }
+  }
+}
+
+.addCartContainer {
+  display: flex;
+  flex-direction: column;
+
+  @include media(">desktop") {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .addCartButton {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    background: #FF7E1B;
+    box-shadow: 0px 20px 50px -20px #FF7E1B;
+    border-radius: 10px;
+
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 16px;
+    color: #FFFFFF;
+
+    padding: 19px;
+    margin-top: 16px;
+    cursor: pointer;
+
+    @include media(">desktop") {
+      margin-top: 0;
+      margin-left: 16px;
+      transition: background 0.3s;
+
+      &:hover {
+        background: #FFAB6A;
+      }
+    }
+
+    .cartIcon {
+      width: auto;
+      height: 16px;
+      margin-right: 16px;
+
+      path {
+        fill: #FFFFFF;
+      }
+    }
+  }
+}

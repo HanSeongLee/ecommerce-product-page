@@ -1,8 +1,11 @@
 import Head from 'next/head';
+import styles from './style.module.scss';
+import Header from "../components/Header";
+import Product from "../components/Product";
 
 export default function Home() {
   return (
-    <>
+    <div className={styles.container}>
       <Head>
         <meta charSet="UTF-8"/>
         <meta name="viewport"
@@ -52,8 +55,13 @@ export default function Home() {
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
       </Head>
 
+      <Header />
+
       <main>
+        <section>
+          <Product />
+        </section>
       </main>
-    </>
+    </div>
   )
 }

@@ -1,0 +1,160 @@
+@import "styles/utils";
+
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.75);
+  mix-blend-mode: normal;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .lightboxImageContainer {
+    position: relative;
+
+    .closeButton {
+      position: absolute;
+      top: -44px;
+      right: 0;
+      cursor: pointer;
+
+      &:hover {
+        svg path {
+          fill: #FF7E1B;
+        }
+      }
+
+      svg {
+        width: 20px;
+        height: 20px;
+
+        path {
+          fill: #FFFFFF;
+          transition: fill 0.3s;
+        }
+      }
+    }
+
+    .previousButton {
+      position: absolute;
+      top: 50%;
+      left: -33px;
+      transform: translateY(-50%);
+      width: 56px;
+      height: 56px;
+      background: #FFFFFF;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+
+      &:hover {
+        svg path {
+          stroke: #FF7E1B;
+        }
+      }
+
+      svg {
+        height: 18px;
+        margin-right: 3px;
+
+        path {
+          transition: stroke 0.3s;
+        }
+      }
+    }
+
+    .nextButton {
+      position: absolute;
+      top: 50%;
+      right: -33px;
+      transform: translateY(-50%);
+      width: 56px;
+      height: 56px;
+      background: #FFFFFF;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+
+      &:hover {
+        svg path {
+          stroke: #FF7E1B;
+        }
+      }
+
+      svg {
+        height: 18px;
+        margin-left: 3px;
+
+        path {
+          transition: stroke 0.3s;
+        }
+      }
+    }
+
+    .lightboxImage {
+      width: 550px;
+      height: 550px;
+      border-radius: 15px;
+    }
+  }
+
+  .lightboxThumbnailContainer {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 31px;
+    margin-top: 40px;
+
+    .lightboxThumbnailItem {
+      position: relative;
+      width: 88px;
+      height: 88px;
+      border-radius: 10px;
+      overflow: hidden;
+      cursor: pointer;
+
+      &::before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        content: "";
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(0deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5));
+        border-radius: 10px;
+        transition: opacity 0.3s;
+        opacity: 0;
+      }
+
+      &:hover {
+        &::before {
+          background: linear-gradient(0deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5));
+          opacity: 1;
+        }
+      }
+
+      &.selected {
+        &::before {
+          width: calc(100% - 4px);
+          height: calc(100% - 4px);
+          background: linear-gradient(0deg, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75));
+          border: 2px solid #FF7E1B;
+          opacity: 1;
+        }
+      }
+
+      .lightboxThumbnailImage {
+        width: 88px;
+        height: 88px;
+        border-radius: 10px;
+      }
+    }
+  }
+}

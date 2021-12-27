@@ -1,0 +1,207 @@
+@import "styles/utils";
+
+.header {
+  position: relative;
+  padding-top: 19px;
+  padding-bottom: 25px;
+
+  @include media(">desktop") {
+    padding-bottom: 34px;
+    margin-bottom: 97px;
+    border-bottom: 1px solid #E4E9F2;
+  }
+
+  .headerContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .wrapper {
+      display: flex;
+      align-items: center;
+    }
+
+    .menuIcon {
+      display: flex;
+      width: 16px;
+      height: 15px;
+      margin-right: 16px;
+      cursor: pointer;
+
+      @include media(">desktop") {
+        display: none;
+      }
+    }
+
+    .logo {
+      width: 137.5px;
+      height: 20px;
+    }
+
+    .menuBackground {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.75);
+      z-index: 2;
+
+      @include media(">desktop") {
+        display: block;
+        position: relative;
+        background: transparent;
+        z-index: initial;
+      }
+
+      &.open {
+        display: block;
+      }
+
+      .menuOverlay {
+        background: #FFFFFF;
+        width: 250px;
+        height: 100%;
+        padding: 24px;
+
+        @include media(">desktop") {
+          width: initial;
+          padding: 0;
+          margin-left: 56.5px;
+        }
+
+        .closeIcon {
+          width: 13.44px;
+          height: 13.44px;
+          cursor: pointer;
+
+          @include media(">desktop") {
+            display: none;
+          }
+        }
+
+        .menu {
+          display: flex;
+          flex-direction: column;
+          list-style: none;
+          font-weight: bold;
+          font-size: 18px;
+          line-height: 26px;
+          color: #1D2026;
+          margin-top: 54px;
+
+          @include media(">desktop") {
+            flex-direction: row;
+            margin-top: 0;
+            font-weight: normal;
+            font-size: 15px;
+            line-height: 26px;
+            color: #69707D;
+          }
+
+          .menuItem {
+            margin-bottom: 20px;
+            cursor: pointer;
+            height: 100%;
+
+            @include media(">desktop") {
+              position: relative;
+              margin-bottom: 0;
+              margin-right: 32px;
+              transition: color 0.3s;
+
+              &::before {
+                position: absolute;
+                content: "";
+                width: 100%;
+                height: 68px;
+                border-bottom: 4px solid #FF7E1B;
+                transform-origin: left;
+                transform: scaleX(0);
+                transition: transform 0.3s;
+              }
+
+              &:hover {
+                color: #1D2026;
+
+                &::before {
+                  transform: scaleX(1);
+                }
+              }
+            }
+
+            &:last-child {
+              margin-bottom: 0;
+              margin-right: 0;
+            }
+          }
+        }
+      }
+    }
+
+    .cartButton {
+      display: flex;
+      position: relative;
+      margin-right: 22px;
+      cursor: pointer;
+
+      @include media(">desktop") {
+        margin-right: 40px;
+
+        &:hover {
+          .cartIcon path {
+            fill: #1D2026;
+          }
+        }
+      }
+
+      &.open {
+        .cartIcon path {
+          fill: #1D2026;
+        }
+      }
+
+      .cartIcon {
+        width: auto;
+        height: 20px;
+
+        path {
+          transition: fill 0.3s;
+        }
+      }
+
+      .quantityLabel {
+        position: absolute;
+        top: -6px;
+        right: -6px;
+        background: #FF7E1B;
+        border-radius: 6.5px;
+        font-weight: bold;
+        font-size: 10px;
+        line-height: 10px;
+        color: #FFFFFF;
+        width: 19px;
+        height: 13px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  }
+
+  .cartContainer {
+    position: absolute;
+    top: 76px;
+    left: 0;
+    z-index: 1;
+    padding-left: 7px;
+    padding-right: 8px;
+    width: 100%;
+    display: none;
+
+    &.open {
+      display: block;
+    }
+  }
+}

@@ -1,0 +1,32 @@
+@import "styles/utils";
+
+.avatarContainer {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+
+  @include media(">desktop") {
+    width: 50px;
+    height: 50px;
+
+    &:hover {
+      &::before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: calc(100% - 4px);
+        height: calc(100% - 4px);
+        content: "";
+        border: 2px solid #FF7E1B;
+        border-radius: 50%;
+      }
+    }
+  }
+
+  .avatarImage {
+    width: 100%;
+  }
+}

@@ -1,0 +1,134 @@
+@import "styles/utils";
+
+.galleryContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-height: 300px;
+  overflow: hidden;
+
+  @include media(">mobile") {
+    max-height: 500px;
+  }
+
+  @include media(">desktop") {
+    max-width: 445px;
+    max-height: initial;
+  }
+
+  .galleryImage {
+    width: 100%;
+    cursor: pointer;
+
+    @include media(">desktop") {
+      width: 445px;
+      height: 445px;
+      border-radius: 15px;
+    }
+  }
+
+  .previousButton {
+    position: absolute;
+    top: 50%;
+    left: 16px;
+    transform: translateY(-50%);
+    background: #FFFFFF;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    @include media(">desktop") {
+      display: none;
+    }
+
+    svg {
+      width: auto;
+      height: 11.43px;
+    }
+  }
+
+  .nextButton {
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    transform: translateY(-50%);
+    background: #FFFFFF;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    @include media(">desktop") {
+      display: none;
+    }
+
+    svg {
+      width: auto;
+      height: 11.43px;
+    }
+  }
+}
+
+.galleryThumbnailContainer {
+  display: none;
+
+  @include media(">desktop") {
+    max-width: 445px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 31px;
+    margin-top: 32px;
+  }
+
+  .galleryThumbnailItem {
+    position: relative;
+    width: 88px;
+    height: 88px;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+
+    &::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      content: "";
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(0deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5));
+      border-radius: 10px;
+      transition: opacity 0.3s;
+      opacity: 0;
+    }
+
+    &:hover {
+      &::before {
+        background: linear-gradient(0deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5));
+        opacity: 1;
+      }
+    }
+
+    &.selected {
+      &::before {
+        width: calc(100% - 4px);
+        height: calc(100% - 4px);
+        background: linear-gradient(0deg, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75));
+        border: 2px solid #FF7E1B;
+        opacity: 1;
+      }
+    }
+
+    .galleryThumbnailImage {
+      width: 100%;
+    }
+  }
+}
