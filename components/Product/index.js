@@ -19,7 +19,6 @@ const Product = (product) => {
     }, [price, originalPrice]);
 
     const onAddCartClick = useCallback(() => {
-        console.log(product)
         dispatch({type: 'add_cart', value: {
                 ...product,
                 quantity,

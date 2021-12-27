@@ -11,7 +11,6 @@ export const AppReducer = (state, action) => {
             return action.value;
         }
         case 'add_cart': {
-            console.log(action.value.quantity)
             return {
                 ...state,
                 cart: {
